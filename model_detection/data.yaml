@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 1
+names: ['display']
+
+roboflow:
+  workspace: piyush-kumar-uou3u
+  project: digital-meter-gzxcg
+  version: 1
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/piyush-kumar-uou3u/digital-meter-gzxcg/dataset/1

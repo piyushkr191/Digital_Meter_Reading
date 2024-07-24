@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page - Steel Authority of India</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'home.css' %}">
+</head>
+
+<body>
+    <div class="background"></div>
+    <header class="navbar">
+        <div class="logo-container">
+            <img src="{% static 'logo.png' %}" alt="Logo" class="logo">
+            <h1>STEEL AUTHORITY OF INDIA</h1>
+        </div>
+        <nav class="navbar-links">
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="profile.html">Profile</a></li>
+            </ul>
+        </nav>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+    <main>
+        <div class="home-wrapper">
+            <div class="container">
+                <h2>Welcome to Steel Authority of India</h2>
+                <button class="upload-button" onclick="window.location.href='{% url 'uploadimg' %}'">Upload Image</button>
+            </div>
+        </div>
+    </main>
+    <script>
+        // Hamburger menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navbarLinks = document.querySelector('.navbar-links');
+        hamburger.addEventListener('click', () => {
+            navbarLinks.classList.toggle('active');
+        });
+    </script>
+</body>
+
+</html>

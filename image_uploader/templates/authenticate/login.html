@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page - Steel Authority of India</title>
+    <link rel="stylesheet" href="{% static 'login.css' %}">
+</head>
+<body>
+    <div class="background"></div>
+    <div class="login-wrapper">
+        <div class="login-container">
+            <div class="logo-container">
+                <img src="{% static 'logo.png' %}" alt="Steel Authority of India Logo" class="logo">
+                <h1>STEEL AUTHORITY OF INDIA</h1>
+            </div>
+            <h2>Login</h2>
+            <form action="{% url 'login' %}" method="post">
+                {% csrf_token %}
+                <div class="input-group">
+                    <label for="username">Employee ID:</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="login">Login</button>
+                <button type="button" class="signup" onclick="window.location.href='{% url 'signup' %}'">Sign Up</button>
+            </form>
+            {% if messages %}
+                <div class="messages">
+                    {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    <script>
+        // JavaScript for typing animation
+        const usernameInput = document.getElementById('username');
+        const passwordInput = document.getElementById('password');
+
+        function typeInInput(inputElement, text) {
+            let index = 0;
+            const intervalId = setInterval(() => {
+                inputElement.setAttribute('placeholder', text.slice(0, index + 1));
+                index++;
+                if (index === text.length) {
+                    clearInterval(intervalId);
+                }
+            }, 100); // Adjust typing speed here (milliseconds)
+        }
+
+        // Trigger animation on page load
+        typeInInput(usernameInput, 'Enter your employee id');
+        typeInInput(passwordInput, 'Enter your password');
+    </script>
+</body>
+</html>
